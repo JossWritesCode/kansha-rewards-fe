@@ -33,7 +33,7 @@ export default [
         expect: true,
         beforeEach: true,
         afterEach: true,
-        beforeALl: true,
+        beforeAll: true,
         afterAll: true,
         ...globals.browser,
       },
