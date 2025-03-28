@@ -27,6 +27,14 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
+        vi: true,
+        describe: true,
+        it: true,
+        expect: true,
+        beforeEach: true,
+        afterEach: true,
+        beforeALl: true,
+        afterAll: true,
         ...globals.browser,
       },
       // ecmaFeatures: { jsx: true }, // optional if parser is set
