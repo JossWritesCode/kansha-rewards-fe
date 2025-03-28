@@ -1,28 +1,72 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import js from '@eslint/js';
+import globals from 'globals';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+// The new @typescript-eslint is split into parser + plugin
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+
+// Prettier
+import prettierPlugin from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
+
+export default [
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    ignores: ['dist', 'node_modules'],
+  },
+  {
+    // Apply to TS + TSX files
     files: ['**/*.{ts,tsx}'],
+
+    // Set up the language environment
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
+      // ecmaFeatures: { jsx: true }, // optional if parser is set
     },
+
+    // Register your plugins
     plugins: {
-      'react-hooks': reactHooks,
+      '@typescript-eslint': tsPlugin,
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
       'react-refresh': reactRefresh,
+      prettier: prettierPlugin,
     },
+
+    // Merge recommended configs + custom rules
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      // Base JS recommended
+      ...js.configs.recommended.rules,
+
+      // TypeScript recommended
+      ...tsPlugin.configs.recommended.rules,
+
+      // React recommended
+      ...reactPlugin.configs.recommended.rules,
+
+      // React Hooks recommended
+      ...reactHooksPlugin.configs.recommended.rules,
+
+      // React Refresh
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+
+      // Stop yelling at me for not importing React
+      'react/react-in-jsx-scope': 'off',
+
+      // Turn off explicit return type for TS
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+
+      // Prettier last – disables style rules & runs Prettier
+      ...prettierConfig.rules,
+      'prettier/prettier': 'error',
     },
   },
-)
+];
