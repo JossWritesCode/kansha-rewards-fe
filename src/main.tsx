@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import './styles/tailwind.css';
+import './styles/index.css';
 
 import AuthProvider from '@providers/auth/AuthProvider';
 import UserProvider from '@providers/user/UserProvider';
