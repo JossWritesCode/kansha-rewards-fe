@@ -1,9 +1,15 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import MarketingLayout from '../Layout';
+import React from 'react';
+
+function renderWithRouter(ui: React.ReactElement) {
+  return render(<MemoryRouter>{ui}</MemoryRouter>);
+}
 
 describe('MarketingLayout', () => {
   it('renders the header and footer', () => {
-    render(
+    renderWithRouter(
       <MarketingLayout>
         <div>Test Content</div>
       </MarketingLayout>,
@@ -14,7 +20,7 @@ describe('MarketingLayout', () => {
   });
 
   it('renders child content', () => {
-    render(
+    renderWithRouter(
       <MarketingLayout>
         <h1>Welcome to Kansha</h1>
       </MarketingLayout>,
@@ -24,7 +30,7 @@ describe('MarketingLayout', () => {
   });
 
   it('has semantic layout structure', () => {
-    render(
+    renderWithRouter(
       <MarketingLayout>
         <p>Page body</p>
       </MarketingLayout>,
