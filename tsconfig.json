@@ -14,13 +14,13 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@features/*": ["features/*"],
-      "@lib/*": ["lib/*"],
-      "@layout/*": ["layout/*"],
-      "@providers/*": ["providers/*"]
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@features/*": ["src/features/*"],
+      "@layout/*": ["src/layout/*"],
+      "@providers/*": ["src/providers/*"]
     }
   },
   "include": ["src"],

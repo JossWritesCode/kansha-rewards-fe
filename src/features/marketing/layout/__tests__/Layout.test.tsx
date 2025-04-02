@@ -1,11 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import MarketingLayout from '../Layout';
-import React from 'react';
-
-function renderWithRouter(ui: React.ReactElement) {
-  return render(<MemoryRouter>{ui}</MemoryRouter>);
-}
+import { renderWithRouter } from '@/test/utils';
 
 describe('MarketingLayout', () => {
   it('renders the header and footer', () => {
@@ -15,8 +10,8 @@ describe('MarketingLayout', () => {
       </MarketingLayout>,
     );
 
-    expect(screen.getByRole('banner')).toBeInTheDocument(); // header
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument(); // footer
+    expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
   it('renders child content', () => {

@@ -1,11 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import LandingPage from '../LandingPage';
-import React from 'react';
-
-function renderWithRouter(ui: React.ReactElement) {
-  return render(<MemoryRouter>{ui}</MemoryRouter>);
-}
+import { renderWithRouter } from '@/test/utils';
 
 describe('LandingPage', () => {
   it('renders the heading', () => {

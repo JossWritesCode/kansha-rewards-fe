@@ -1,11 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import { renderWithRouter } from '@/test/utils';
 import Header from '../Header';
-import React from 'react';
-
-function renderWithRouter(ui: React.ReactElement) {
-  return render(<MemoryRouter>{ui}</MemoryRouter>);
-}
 
 describe('Header', () => {
   it('renders the logo image with alt text', () => {
