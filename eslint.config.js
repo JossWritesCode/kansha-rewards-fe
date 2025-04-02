@@ -26,6 +26,7 @@ export default [
       parser: tsParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
+      ecmaFeatures: { jsx: true },
       globals: {
         vi: true,
         describe: true,

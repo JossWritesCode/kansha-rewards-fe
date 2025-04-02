@@ -1,20 +1,21 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import MarketingLayout from '../Layout';
+import { renderWithRouter } from '@/test/utils';
 
 describe('MarketingLayout', () => {
   it('renders the header and footer', () => {
-    render(
+    renderWithRouter(
       <MarketingLayout>
         <div>Test Content</div>
       </MarketingLayout>,
     );
 
-    expect(screen.getByRole('banner')).toBeInTheDocument(); // header
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument(); // footer
+    expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
   it('renders child content', () => {
-    render(
+    renderWithRouter(
       <MarketingLayout>
         <h1>Welcome to Kansha</h1>
       </MarketingLayout>,
@@ -24,7 +25,7 @@ describe('MarketingLayout', () => {
   });
 
   it('has semantic layout structure', () => {
-    render(
+    renderWithRouter(
       <MarketingLayout>
         <p>Page body</p>
       </MarketingLayout>,

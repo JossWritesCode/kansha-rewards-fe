@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import LandingPage from '../LandingPage';
+import { renderWithRouter } from '@/test/utils';
 
 describe('LandingPage', () => {
   it('renders the heading', () => {
     expect.hasAssertions();
-    render(<LandingPage />);
+    renderWithRouter(<LandingPage />);
     expect(
       screen.getByRole('heading', {
         name: /workplace recognition.*redefined/i,
@@ -13,14 +14,14 @@ describe('LandingPage', () => {
   });
 
   it('renders the description paragraph', () => {
-    render(<LandingPage />);
+    renderWithRouter(<LandingPage />);
     expect.hasAssertions();
     expect(screen.getByText(/Kansha helps teams build a culture of praise/i)).toBeInTheDocument();
   });
 
   it('renders the CTA button', () => {
     expect.hasAssertions();
-    const { getByRole } = render(<LandingPage />);
+    const { getByRole } = renderWithRouter(<LandingPage />);
     const button = getByRole('button', { name: /join today/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass('bg-black');

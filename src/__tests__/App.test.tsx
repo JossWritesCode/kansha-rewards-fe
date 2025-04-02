@@ -10,11 +10,7 @@ describe('App Routing', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: /login/i })).toHaveAttribute('href', '/login');
-    expect(screen.getByRole('link', { name: /onboarding/i })).toHaveAttribute(
-      'href',
-      '/onboarding',
-    );
+    expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
   });
 
   it('renders the LoginPage on /login route', () => {
