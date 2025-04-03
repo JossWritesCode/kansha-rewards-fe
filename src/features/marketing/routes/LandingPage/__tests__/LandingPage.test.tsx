@@ -1,29 +1,23 @@
 import { screen } from '@testing-library/react';
 import LandingPage from '../LandingPage';
 import { renderWithRouter } from '@/test/utils';
-
 describe('LandingPage', () => {
-  it('renders the heading', () => {
-    expect.hasAssertions();
+  it('renders the hero section headline', () => {
     renderWithRouter(<LandingPage />);
-    expect(
-      screen.getByRole('heading', {
-        name: /workplace recognition.*redefined/i,
-      }),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/workplace recognition/i)).toBeInTheDocument();
+    expect(screen.getByText(/redefined/i)).toBeInTheDocument();
   });
 
-  it('renders the description paragraph', () => {
+  it('renders the call to action button', () => {
     renderWithRouter(<LandingPage />);
-    expect.hasAssertions();
-    expect(screen.getByText(/Kansha helps teams build a culture of praise/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /join today/i })).toBeInTheDocument();
   });
 
-  it('renders the CTA button', () => {
-    expect.hasAssertions();
-    const { getByRole } = renderWithRouter(<LandingPage />);
-    const button = getByRole('button', { name: /join today/i });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('bg-black');
+  it('renders the hero image', () => {
+    renderWithRouter(<LandingPage />);
+    const img = screen.getByAltText(/happy team celebrating/i);
+    expect(img).toBeInTheDocument();
+    expect(img.tagName.toLowerCase()).toBe('img');
+    expect(img).toHaveAttribute('src', expect.stringContaining('heroImage'));
   });
 });

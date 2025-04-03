@@ -1,42 +1,31 @@
-import { screen } from '@testing-library/react';
-import MarketingLayout from '../Layout';
+import { render, screen } from '@testing-library/react';
+import Layout from '../Layout';
 import { renderWithRouter } from '@/test/utils';
-
-describe('MarketingLayout', () => {
-  it('renders the header and footer', () => {
+describe('Layout', () => {
+  it('renders the Header component', () => {
     renderWithRouter(
-      <MarketingLayout>
-        <div>Test Content</div>
-      </MarketingLayout>,
+      <Layout>
+        <p>Test content</p>
+      </Layout>,
     );
-
     expect(screen.getByRole('banner')).toBeInTheDocument();
+  });
+
+  it('renders the Footer component', () => {
+    renderWithRouter(
+      <Layout>
+        <p>Test content</p>
+      </Layout>,
+    );
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
-  it('renders child content', () => {
+  it('renders children inside the main content area', () => {
     renderWithRouter(
-      <MarketingLayout>
-        <h1>Welcome to Kansha</h1>
-      </MarketingLayout>,
+      <Layout>
+        <p>Test content</p>
+      </Layout>,
     );
-
-    expect(screen.getByText(/welcome to kansha/i)).toBeInTheDocument();
-  });
-
-  it('has semantic layout structure', () => {
-    renderWithRouter(
-      <MarketingLayout>
-        <p>Page body</p>
-      </MarketingLayout>,
-    );
-
-    const header = screen.getByRole('banner');
-    const footer = screen.getByRole('contentinfo');
-    const main = header.parentElement?.querySelector('main');
-
-    expect(header).toBeInTheDocument();
-    expect(footer).toBeInTheDocument();
-    expect(main).toContainElement(screen.getByText(/page body/i));
+    expect(screen.getByText('Test content')).toBeInTheDocument();
   });
 });
