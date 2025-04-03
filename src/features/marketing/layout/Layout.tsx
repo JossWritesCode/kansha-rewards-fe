@@ -5,7 +5,7 @@ function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-grow p-5">{children}</main>
+      <main className="flex-grow px-5 py-9">{children}</main>
       <Footer />
     </div>
   );
