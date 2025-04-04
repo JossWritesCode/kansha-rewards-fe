@@ -3,18 +3,17 @@ import heroImage from '@assets/heroImage.png';
 function HeroSection() {
   return (
     <section className="w-full md:bg-brand-softBeach">
-      <div className="mx-auto flex max-w-7xl flex-col items-center px-5 py-10 text-center md:flex-row md:items-end md:justify-between md:text-left">
-        {/* Text Content */}
-        <div className="flex max-w-md flex-col items-center md:items-start">
-          <h2 className="text-3xl font-normal leading-snug tracking-wide text-brand-black md:text-4xl">
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center px-5 py-10 text-center md:flex-row md:items-end md:justify-between md:py-24 md:text-left">
+        <div className="flex max-w-3xl flex-col items-center md:items-start">
+          <h2 className="text-3xl leading-snug tracking-wide text-brand-black md:text-4xl lg:text-6xl">
             Workplace recognition.
           </h2>
 
-          <h3 className="mt-2 text-5xl font-light leading-none text-brand-primary md:text-7xl">
+          <h3 className="mt-2 text-5xl font-light leading-none text-brand-primary md:text-7xl lg:text-8xl">
             Redefined.
           </h3>
 
-          <p className="mt-6 text-lg font-medium leading-relaxed tracking-wider text-brand-boulder">
+          <p className="mt-6 text-lg leading-relaxed tracking-wider text-brand-boulder">
             Making it easy to recognize your teams with rewards and personalized messages.
           </p>
 
@@ -22,8 +21,6 @@ function HeroSection() {
             Join today
           </button>
         </div>
-
-        {/* Image */}
         <img
           src={heroImage}
           alt="Happy team celebrating"
