@@ -2,19 +2,21 @@ import logo from '@/assets/logo.svg';
 import { Link } from 'react-router-dom';
 function Header() {
   return (
-    <header
-      role="banner"
-      className="flex h-[80px] items-center justify-between bg-[var(--primary-blue)] px-4 lg:px-12"
-    >
-      <Link to="/" className="flex items-center">
-        {/*top padding is necessary on logo because it has shadow around it which makes it look misaligned */}
-        <img src={logo} alt="Kansha logo" className="pt-2" />
-        <span className="text-2xl font-normal text-[var(--white)] hover:underline">Kansha</span>
-      </Link>
-      <div className="flex items-center gap-2">
-        <button type="button" className="font-normal text-[var(--white)]">
-          Login
-        </button>
+    <header role="banner" className="w-full bg-brand-primary">
+      {/* smaller left padding to visually align logo despite shadow */}
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-between py-4 pl-2 pr-5 md:pl-0">
+        <Link to="/">
+          {/* top padding to compensate for logo shadow */}
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="Kansha logo" className="pt-2" />
+            <span className="text-3xl font-normal text-brand-white hover:underline">Kansha</span>
+          </div>
+        </Link>
+        <div className="flex items-center gap-2">
+          <Link to="/login" className="text-2xl font-medium text-brand-white hover:underline">
+            Login
+          </Link>
+        </div>
       </div>
     </header>
   );
