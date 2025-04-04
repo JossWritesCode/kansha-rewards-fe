@@ -17,10 +17,11 @@ describe('Header', () => {
     expect(brandLink).toHaveAttribute('href', '/');
   });
 
-  it('renders the login button', () => {
+  it('renders the login link', () => {
     renderWithRouter(<Header />);
-    const loginButton = screen.getByRole('button', { name: /login/i });
-    expect(loginButton).toBeInTheDocument();
+    const loginLink = screen.getByRole('link', { name: /login/i });
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink).toHaveAttribute('href', '/login');
   });
 
   it('has semantic role of banner', () => {

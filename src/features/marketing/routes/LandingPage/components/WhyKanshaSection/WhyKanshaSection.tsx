@@ -1,6 +1,6 @@
 function WhyKanshaSection() {
   return (
-    <section className="mt-16 w-full max-w-screen-2xl px-5 py-10 md:mx-auto md:mt-24">
+    <section className="mb-6 w-full max-w-screen-2xl px-5 py-10 md:mx-auto md:mb-24 md:mt-24">
       <div className="max-w-2xl md:ml-0">
         <h2 className="mb-6 text-center text-5xl text-brand-black md:mb-8 md:text-left">
           Why Kansha?
