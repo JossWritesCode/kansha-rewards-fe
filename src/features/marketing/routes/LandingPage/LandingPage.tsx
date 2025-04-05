@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection';
 import WhyKanshaSection from './components/WhyKanshaSection';
 import StatsSection from './components/StatsSection';
 import FeaturesGridSection from './components/FeaturesGridSection';
+import ResultsSection from './components/ResultsSection';
 function LandingPage() {
   return (
     <Layout>
@@ -11,6 +12,7 @@ function LandingPage() {
       <WhyKanshaSection />
       <StatsSection />
       <FeaturesGridSection />
+      <ResultsSection />
     </Layout>
   );
 }
