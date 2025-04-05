@@ -2,7 +2,7 @@ import { Gift, BadgeCheck, Settings, Users, MessageCircle, Heart as HeartIcon } 
 import IconWrapper from './components/IconWrapper';
 import FeatureItem from './components/FeatureItem';
 
-function FeaturesGrid() {
+function FeaturesGridSection() {
   return (
     <section className="w-full py-32">
       <div className="mx-auto flex max-w-screen-2xl flex-col px-5">
@@ -48,4 +48,4 @@ function FeaturesGrid() {
   );
 }
 
-export default FeaturesGrid;
+export default FeaturesGridSection;

@@ -1,5 +1,5 @@
 import heroImage from '@assets/heroImage.png';
-import CTAButton from '../../../../components/CTAButton';
+import CTAButton from '@/features/marketing/components/CTAButton';
 
 function HeroSection() {
   return (
