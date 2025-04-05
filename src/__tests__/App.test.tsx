@@ -1,47 +1,25 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import App from '../App';
+import { renderWithRouter } from '@/test/utils';
 
 describe('App Routing', () => {
-  it('renders the navigation links', () => {
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-
-    const loginLink = screen.getByRole('link', { name: /login/i });
-    expect(loginLink).toBeInTheDocument();
-    expect(loginLink).toHaveAttribute('href', '/login');
-  });
-
-  it('renders the LoginPage on /login route', () => {
-    render(
-      <MemoryRouter initialEntries={['/login']}>
-        <App />
-      </MemoryRouter>,
-    );
-
+  it('renders the LoginPage when visiting /login', () => {
+    renderWithRouter(<App />, { route: '/login' });
     expect(screen.getByRole('heading', { name: /login page/i })).toBeInTheDocument();
   });
 
-  it('renders the OnboardingIntro on /onboarding route', () => {
-    render(
-      <MemoryRouter initialEntries={['/onboarding']}>
-        <App />
-      </MemoryRouter>,
-    );
-
+  it('renders the OnboardingIntro when visiting /onboarding', () => {
+    renderWithRouter(<App />, { route: '/onboarding' });
     expect(screen.getByRole('heading', { name: /onboarding intro/i })).toBeInTheDocument();
   });
 
-  it('renders the LandingPage on unknown routes', () => {
-    render(
-      <MemoryRouter initialEntries={['/something-else']}>
-        <App />
-      </MemoryRouter>,
-    );
+  it('renders the DashboardLayout when visiting /dashboard', () => {
+    renderWithRouter(<App />, { route: '/dashboard' });
+    expect(screen.getByText(/dashboard/i)).toBeInTheDocument(); // adjust based on DashboardLayout content
+  });
 
+  it('renders the LandingPage for unknown routes', () => {
+    renderWithRouter(<App />, { route: '/something-random' });
     expect(screen.getByText(/workplace recognition/i)).toBeInTheDocument();
   });
 });

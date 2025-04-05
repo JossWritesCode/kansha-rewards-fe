@@ -1,8 +1,15 @@
+import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import { MemoryRouter, MemoryRouterProps } from 'react-router-dom';
 
-export function renderWithRouter(ui: React.ReactElement, routerProps?: MemoryRouterProps) {
-  return render(<MemoryRouter {...routerProps}>{ui}</MemoryRouter>);
+interface RenderWithRouterOptions {
+  route?: string;
+}
+
+export function renderWithRouter(
+  ui: React.ReactNode,
+  { route = '/' }: RenderWithRouterOptions = {},
+) {
+  return render(<MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>);
 }
 
 export function svgParent(container: HTMLElement) {
