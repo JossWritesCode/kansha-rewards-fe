@@ -1,17 +1,17 @@
 import { screen } from '@testing-library/react';
 import { renderWithRouter } from '@/test/utils'; // or whatever your wrapper utility is
-import FeaturesGrid from '../FeaturesGrid';
+import FeaturesGridSection from '../FeaturesGridSection';
 
-describe('FeaturesGrid', () => {
+describe('FeaturesGridSection', () => {
   it('renders the main heading', () => {
-    renderWithRouter(<FeaturesGrid />);
+    renderWithRouter(<FeaturesGridSection />);
     expect(
       screen.getByRole('heading', { name: /recognize, motivate and track accomplishments/i }),
     ).toBeInTheDocument();
   });
 
   it('renders all feature titles', () => {
-    renderWithRouter(<FeaturesGrid />);
+    renderWithRouter(<FeaturesGridSection />);
 
     expect(screen.getByRole('heading', { name: /rewards/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /earn badges/i })).toBeInTheDocument();
@@ -22,7 +22,7 @@ describe('FeaturesGrid', () => {
   });
 
   it('renders all feature descriptions', () => {
-    renderWithRouter(<FeaturesGrid />);
+    renderWithRouter(<FeaturesGridSection />);
 
     expect(screen.getByText(/send your peers a gift card with a message/i)).toBeInTheDocument();
     expect(screen.getByText(/earn and send badges to your peers/i)).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('FeaturesGrid', () => {
   });
 
   it('renders six feature items', () => {
-    renderWithRouter(<FeaturesGrid />);
+    renderWithRouter(<FeaturesGridSection />);
 
     const featureTitles = screen.getAllByRole('heading', { level: 3 });
     expect(featureTitles.length).toBe(6);
