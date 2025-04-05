@@ -4,7 +4,7 @@ import FeatureItem from './components/FeatureItem';
 
 function FeaturesGridSection() {
   return (
-    <section className="w-full py-32">
+    <section className="w-full py-20 md:py-32">
       <div className="mx-auto flex max-w-screen-2xl flex-col px-5">
         <h2 className="mb-14 text-4xl font-normal leading-snug tracking-wide text-brand-black lg:text-6xl">
           Recognize,
